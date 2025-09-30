@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroTools - Simple Tools for Everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .tool-card.featured {
+            border: 3px solid #667eea;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .tool-card.featured::before {
+            content: "🔥 FEATURED";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .tool-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .tool-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .tool-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .tool-features li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .tool-features li::before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+        
+        .tool-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .tool-price-note {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .tool-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .tool-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tool-btn.demo {
+            background: #6c757d;
+            margin-bottom: 10px;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+            position: relative;
+        }
+        
+        .coming-soon::after {
+            content: "🚧 COMING SOON";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .marketplace-info {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .marketplace-info h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .marketplace-info p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit {
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .benefit-desc {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ MicroTools</h1>
+            <p>Simple tools for everyday problems. No complexity, just solutions.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">$2-25</div>
+                    <div class="stat-label">Per Tool</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Offline Ready</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Accounts Needed</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Expense Tracker -->
+            <div class="tool-card featured">
+                <div class="tool-icon">💰</div>
+                <div class="tool-title">Simple Expense Tracker</div>
+                <div class="tool-description">
+                    Track your spending the easy way. No accounts, no complexity, just simple money tracking.
+                </div>
+                <ul class="tool-features">
+                    <li>Add expenses in seconds</li>
+                    <li>Smart categories with emojis</li>
+                    <li>Monthly spending summary</li>
+                    <li>Works completely offline</li>
+                    <li>No personal data required</li>
+                </ul>
+                <div class="tool-price">$3</div>
+                <div class="tool-price-note">One-time purchase • Lifetime use</div>
+                <a href="index.html" class="tool-btn demo">Try Free Demo</a>
+                <a href="#" class="tool-btn">Buy Now - $3</a>
+            </div>
+            
+            <!-- Password Generator -->
+            <div class="tool-card">
+                <div class="tool-icon">🔐</div>
+                <div class="tool-title">Smart Password Generator</div>
+                <div class="tool-description">
+                    Create strong, memorable passwords instantly. No more "password123" disasters.
+                </div>
+                <ul class="tool-features">
+                    <li>Customizable length & complexity</li>
+                    <li>Easy to remember options</li>
+                    <li>Copy with one click</li>
+                    <li>No internet required</li>
+                </ul>
+                <div class="tool-price">$2</div>
+                <div class="tool-price-note">One-time purchase</div>
+                <a href="#" class="tool-btn demo">Try Demo</a>
+                <a href="#" class="tool-btn">Buy Now - $2</a>
+            </div>
+            
+            <!-- Habit Tracker -->
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <div class="tool-title">Daily Habit Tracker</div>
+                <div class="tool-description">
+                    Build better habits with simple, visual tracking. See your progress at a glance.
+                </div>
+                <ul class="tool-features">
+                    <li>Visual progress calendar</li>
+                    <li>Streak tracking</li>
+                    <li>Custom habit categories</li>
+                    <li>Motivational reminders</li>
+                </ul>
+                <div class="tool-price">$4</div>
+                <div class="tool-price-note">One-time purchase</div>
+                <a href="#" class="tool-btn demo">Try Demo</a>
+                <a href="#" class="tool-btn">Buy Now - $4</a>
+            </div>
+            
+            <!-- Time Tracker -->
+            <div class="tool-card">
+                <div class="tool-icon">⏱️</div>
+                <div class="tool-title">Simple Time Tracker</div>
+                <div class="tool-description">
+                    Track time on projects without the complexity. Perfect for freelancers and students.
+                </div>
+                <ul class="tool-features">
+                    <li>One-click start/stop</li>
+                    <li>Project categorization</li>
+                    <li>Daily/weekly reports</li>
+                    <li>Export to CSV</li>
+                </ul>
+                <div class="tool-price">$5</div>
+                <div class="tool-price-note">One-time purchase</div>
+                <a href="#" class="tool-btn demo">Try Demo</a>
+                <a href="#" class="tool-btn">Buy Now - $5</a>
+            </div>
+            
+            <!-- Budget Planner -->
+            <div class="tool-card coming-soon">
+                <div class="tool-icon">📊</div>
+                <div class="tool-title">Simple Budget Planner</div>
+                <div class="tool-description">
+                    Plan your monthly budget without the spreadsheet complexity. Visual and intuitive.
+                </div>
+                <ul class="tool-features">
+                    <li>Visual budget breakdown</li>
+                    <li>Spending alerts</li>
+                    <li>Goal tracking</li>
+                    <li>Monthly summaries</li>
+                </ul>
+                <div class="tool-price">$7</div>
+                <div class="tool-price-note">Coming Soon</div>
+                <a href="#" class="tool-btn demo">Notify Me</a>
+            </div>
+            
+            <!-- Meal Planner -->
+            <div class="tool-card coming-soon">
+                <div class="tool-icon">🍽️</div>
+                <div class="tool-title">Weekly Meal Planner</div>
+                <div class="tool-description">
+                    Plan your meals for the week. Save time, reduce waste, eat better.
+                </div>
+                <ul class="tool-features">
+                    <li>Drag & drop meal planning</li>
+                    <li>Shopping list generator</li>
+                    <li>Nutrition tracking</li>
+                    <li>Recipe storage</li>
+                </ul>
+                <div class="tool-price">$6</div>
+                <div class="tool-price-note">Coming Soon</div>
+                <a href="#" class="tool-btn demo">Notify Me</a>
+            </div>
+        </div>
+        
+        <div class="marketplace-info">
+            <h2>Why MicroTools?</h2>
+            <p>
+                We believe in simple solutions to everyday problems. No subscriptions, no complexity, 
+                just tools that work. Each tool is designed to do one thing really well.
+            </p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">💳</div>
+                    <div class="benefit-title">One-Time Purchase</div>
+                    <div class="benefit-desc">No subscriptions, no monthly fees. Buy once, use forever.</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-title">Privacy First</div>
+                    <div class="benefit-desc">Your data stays on your device. No accounts, no tracking.</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">Instant Access</div>
+                    <div class="benefit-desc">Download and start using immediately. No setup required.</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📱</div>
+                    <div class="benefit-title">Works Everywhere</div>
+                    <div class="benefit-desc">Desktop, mobile, tablet. Works offline, works anywhere.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
