@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Test</title>
+    <style>
+        body {
+            background: #1a365d;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .left-column {
+            background: rgba(255, 0, 0, 0.3);
+            padding: 20px;
+            border: 2px solid red;
+        }
+        
+        .middle-column {
+            background: rgba(0, 0, 255, 0.3);
+            padding: 20px;
+            border: 2px solid blue;
+        }
+        
+        .right-column {
+            background: rgba(0, 255, 0, 0.3);
+            padding: 20px;
+            border: 2px solid green;
+        }
+        
+        .test-form {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #ff0000;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-submit {
+            background: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Visibility Test</h1>
+    <p>This is a simple test to check if the form layout is working.</p>
+    
+    <div class="test-container">
+        <div class="left-column">
+            <h3>Left Column (Red)</h3>
+            <p>This should be visible on the left side.</p>
+        </div>
+        
+        <div class="middle-column">
+            <h3>Middle Column (Blue)</h3>
+            <p>This should be visible in the middle.</p>
+        </div>
+        
+        <div class="right-column">
+            <h3>Right Column (Green)</h3>
+            <p>This should contain the form.</p>
+            
+            <form class="test-form">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-input" placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <button type="submit" class="form-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <p style="margin-top: 30px; text-align: center;">
+        <strong>If you can see three colored columns with a red-bordered form in the green column, then the layout is working.</strong>
+    </p>
+</body>
+</html>

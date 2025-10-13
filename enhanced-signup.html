@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Hermit - Enhanced Signup</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .form-section {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid rgba(44, 62, 80, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+            outline: none;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .interest-option {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .interest-option:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: #2c3e50;
+        }
+        
+        .interest-option.checked {
+            background: rgba(44, 62, 80, 0.3);
+            border-color: #2c3e50;
+            color: white;
+        }
+        
+        .interest-option input[type="checkbox"] {
+            display: none;
+        }
+        
+        .character-counter {
+            text-align: right;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .character-counter.warning {
+            color: #f39c12;
+        }
+        
+        .character-counter.danger {
+            color: #e74c3c;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 20px 40px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            position: relative;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+        }
+        
+        .message.success {
+            background: rgba(39, 174, 96, 0.2);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+        }
+        
+        .message.error {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <defs>
+                        <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="50" cy="50" r="25" fill="url(#coreGradient)"/>
+                    <circle cx="50" cy="20" r="4" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="80" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="50" cy="80" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="20" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="50" cy="50" r="6" fill="rgba(255,255,255,0.9)"/>
+                </svg>
+            </div>
+            <h1>Digital Hermit</h1>
+            <p class="subtitle">Join Our Community of Mindful Digital Citizens</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <form id="enhancedSignupForm">
+            <!-- Basic Information -->
+            <div class="form-section">
+                <h2 class="section-title">Basic Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <select id="age" name="age">
+                            <option value="">Select Age Range</option>
+                            <option value="18-24">18-24</option>
+                            <option value="25-34">25-34</option>
+                            <option value="35-44">35-44</option>
+                            <option value="45-54">45-54</option>
+                            <option value="55-64">55-64</option>
+                            <option value="65+">65+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Location (City, Country)</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., San Francisco, USA">
+                </div>
+            </div>
+            
+            <!-- Digital Hermit Profile -->
+            <div class="form-section">
+                <h2 class="section-title">Digital Hermit Profile</h2>
+                
+                <div class="form-group">
+                    <label for="bio">Tell us about yourself <span class="required">*</span></label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Share your story, interests, and what draws you to the digital hermit lifestyle..." required></textarea>
+                    <div class="character-counter" id="bioCounter">0 / 500</div>
+                    <div class="error-message" id="bioError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="techInterests">Tech Interests & Skills</label>
+                    <textarea id="techInterests" name="techInterests" rows="3" placeholder="What technologies, programming languages, or digital tools interest you?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mindfulnessPractices">Mindfulness & Wellness Practices</label>
+                    <textarea id="mindfulnessPractices" name="mindfulnessPractices" rows="3" placeholder="Do you practice meditation, yoga, or other mindfulness activities?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workStyle">Work Style & Philosophy</label>
+                    <select id="workStyle" name="workStyle">
+                        <option value="">Select Work Style</option>
+                        <option value="remote">Remote Worker</option>
+                        <option value="freelance">Freelancer</option>
+                        <option value="entrepreneur">Entrepreneur</option>
+                        <option value="student">Student</option>
+                        <option value="retired">Retired</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Interests & Hobbies -->
+            <div class="form-section">
+                <h2 class="section-title">Interests & Hobbies</h2>
+                
+                <div class="form-group">
+                    <label>Select your interests (choose 3-5) <span class="required">*</span></label>
+                    <div class="interests-grid" id="interestsGrid">
+                        <div class="interest-option">
+                            <input type="checkbox" id="programming" name="interests" value="programming">
+                            <label for="programming">Programming & Development</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="design" name="interests" value="design">
+                            <label for="design">Design & UX</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="writing" name="interests" value="writing">
+                            <label for="writing">Writing & Content Creation</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="photography" name="interests" value="photography">
+                            <label for="photography">Photography & Art</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="music" name="interests" value="music">
+                            <label for="music">Music & Audio</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="gaming" name="interests" value="gaming">
+                            <label for="gaming">Gaming & Interactive Media</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="reading" name="interests" value="reading">
+                            <label for="reading">Reading & Learning</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="outdoor" name="interests" value="outdoor">
+                            <label for="outdoor">Outdoor Activities</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="cooking" name="interests" value="cooking">
+                            <label for="cooking">Cooking & Food</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="fitness" name="interests" value="fitness">
+                            <label for="fitness">Fitness & Health</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="travel" name="interests" value="travel">
+                            <label for="travel">Travel & Exploration</label>
+                        </div>
+                        <div class="interest-option">
+                            <input type="checkbox" id="philosophy" name="interests" value="philosophy">
+                            <label for="philosophy">Philosophy & Spirituality</label>
+                        </div>
+                    </div>
+                    <div class="error-message" id="interestsError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobbies">Additional Hobbies & Interests</label>
+                    <textarea id="hobbies" name="hobbies" rows="3" placeholder="Tell us about any other hobbies, interests, or activities you enjoy..."></textarea>
+                    <div class="character-counter" id="hobbiesCounter">0 / 300</div>
+                </div>
+            </div>
+            
+            <!-- Community Preferences -->
+            <div class="form-section">
+                <h2 class="section-title">Community Preferences</h2>
+                
+                <div class="form-group">
+                    <label for="connectionType">What type of connections are you looking for?</label>
+                    <select id="connectionType" name="connectionType">
+                        <option value="">Select Connection Type</option>
+                        <option value="friendship">Friendship & Social</option>
+                        <option value="professional">Professional Networking</option>
+                        <option value="collaboration">Project Collaboration</option>
+                        <option value="mentorship">Mentorship</option>
+                        <option value="learning">Learning Partners</option>
+                        <option value="all">All of the above</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="privacyLevel">Privacy Preference</label>
+                    <select id="privacyLevel" name="privacyLevel">
+                        <option value="public">Public Profile</option>
+                        <option value="community">Community Members Only</option>
+                        <option value="private">Private (Invite Only)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsletter">Email Preferences</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        <label for="newsletter">Subscribe to Digital Hermit newsletter</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="submit-section">
+                <button type="submit" id="submitBtn">
+                    Join Digital Hermit Community
+                </button>
+                <div class="message" id="messageContainer"></div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- PHP Backend Integration -->
+    <script src="js/enhanced-form-php.js"></script>
+</body>
+</html>

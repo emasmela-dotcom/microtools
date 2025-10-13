@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Only Test</title>
+    <style>
+        body {
+            background: #1a365d;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .left, .middle {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .form-container {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 400px;
+        }
+        
+        .form {
+            background: rgba(255,255,255,0.95);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .interest-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .form-submit {
+            background: #3b82f6;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .form-submit:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 30px;">Form Only Test</h1>
+    
+    <div class="container">
+        <div class="left">
+            <h3>Left Column</h3>
+            <p>This is the left column content.</p>
+        </div>
+        
+        <div class="middle">
+            <h3>Middle Column</h3>
+            <p>This is the middle column content.</p>
+        </div>
+        
+        <div class="form-container">
+            <h3 style="text-align: center; margin-bottom: 20px;">Sign Up Form</h3>
+            
+            <form class="form" id="testForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Your Interests:</label>
+                    <div class="interests-grid">
+                        <label class="interest-option">
+                            <input type="checkbox" name="interests" value="technology">
+                            <span>Technology</span>
+                        </label>
+                        <label class="interest-option">
+                            <input type="checkbox" name="interests" value="philosophy">
+                            <span>Philosophy</span>
+                        </label>
+                        <label class="interest-option">
+                            <input type="checkbox" name="interests" value="books">
+                            <span>Books</span>
+                        </label>
+                        <label class="interest-option">
+                            <input type="checkbox" name="interests" value="nature">
+                            <span>Nature</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="form-submit">Find My Digital Tribe</button>
+            </form>
+        </div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px; font-size: 18px;">
+        <strong>You should see three columns with a form in the right column.</strong>
+    </p>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Hermit - Discover & Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8em;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-title h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-title p {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+        
+        .filters {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .filters h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .filter-group select option {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .filter-group input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .filter-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .user-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .user-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .user-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .user-meta {
+            font-size: 0.9em;
+            opacity: 0.8;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .user-bio {
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .user-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .interest-tag {
+            background: rgba(44, 62, 80, 0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            border: 1px solid rgba(44, 62, 80, 0.5);
+        }
+        
+        .connection-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-connect {
+            flex: 1;
+            background: rgba(39, 174, 96, 0.2);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .btn-connect:hover {
+            background: rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-connect:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-view {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .btn-view:hover {
+            background: rgba(52, 152, 219, 0.3);
+        }
+        
+        .connection-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+        
+        .status-connected {
+            background: rgba(39, 174, 96, 0.2);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+        }
+        
+        .status-rejected {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.8;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .page-btn {
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .page-btn.active {
+            background: #2c3e50;
+            border-color: #2c3e50;
+        }
+        
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .match-score {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .users-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .connection-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5"/>
+                    <circle cx="50" cy="50" r="25" fill="url(#coreGradient)"/>
+                    <circle cx="50" cy="20" r="4" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="80" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="50" cy="80" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="20" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+                    <circle cx="50" cy="50" r="6" fill="rgba(255,255,255,0.9)"/>
+                </svg>
+                <h1>Digital Hermit</h1>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="enhanced-signup.html">Join</a>
+                <a href="user-discovery.html">Discover</a>
+                <a href="admin-dashboard.html">Admin</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="page-title">
+            <h2>Discover & Connect</h2>
+            <p>Find like-minded digital hermits based on shared interests and values</p>
+        </div>
+        
+        <div class="filters">
+            <h3>Filter & Search</h3>
+            
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchInput">Search by name or interests</label>
+                    <input type="text" id="searchInput" placeholder="Type to search...">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="locationFilter">Location</label>
+                    <input type="text" id="locationFilter" placeholder="City, Country">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="ageFilter">Age Range</label>
+                    <select id="ageFilter">
+                        <option value="">Any Age</option>
+                        <option value="18-24">18-24</option>
+                        <option value="25-34">25-34</option>
+                        <option value="35-44">35-44</option>
+                        <option value="45-54">45-54</option>
+                        <option value="55-64">55-64</option>
+                        <option value="65+">65+</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="workStyleFilter">Work Style</label>
+                    <select id="workStyleFilter">
+                        <option value="">Any Work Style</option>
+                        <option value="remote">Remote Worker</option>
+                        <option value="freelance">Freelancer</option>
+                        <option value="entrepreneur">Entrepreneur</option>
+                        <option value="student">Student</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="connectionTypeFilter">Connection Type</label>
+                    <select id="connectionTypeFilter">
+                        <option value="">Any Connection Type</option>
+                        <option value="friendship">Friendship & Social</option>
+                        <option value="professional">Professional Networking</option>
+                        <option value="collaboration">Project Collaboration</option>
+                        <option value="mentorship">Mentorship</option>
+                        <option value="learning">Learning Partners</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="interestsFilter">Shared Interests</label>
+                    <select id="interestsFilter">
+                        <option value="">Any Interest</option>
+                        <option value="programming">Programming & Development</option>
+                        <option value="design">Design & UX</option>
+                        <option value="writing">Writing & Content</option>
+                        <option value="photography">Photography & Art</option>
+                        <option value="music">Music & Audio</option>
+                        <option value="gaming">Gaming & Interactive</option>
+                        <option value="reading">Reading & Learning</option>
+                        <option value="outdoor">Outdoor Activities</option>
+                        <option value="cooking">Cooking & Food</option>
+                        <option value="fitness">Fitness & Health</option>
+                        <option value="travel">Travel & Exploration</option>
+                        <option value="philosophy">Philosophy & Spirituality</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortBy">Sort By</label>
+                    <select id="sortBy">
+                        <option value="match">Best Match</option>
+                        <option value="newest">Newest Members</option>
+                        <option value="location">Location</option>
+                        <option value="interests">Most Interests</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-actions">
+                <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                <button class="btn btn-secondary" id="clearFilters">Clear All</button>
+            </div>
+        </div>
+        
+        <div id="usersContainer">
+            <div class="loading">Loading digital hermits...</div>
+        </div>
+        
+        <div class="pagination" id="pagination" style="display: none;">
+            <button class="page-btn" id="prevBtn">Previous</button>
+            <div id="pageNumbers"></div>
+            <button class="page-btn" id="nextBtn">Next</button>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- User Discovery Script -->
+    <script src="js/user-discovery.js"></script>
+</body>
+</html>

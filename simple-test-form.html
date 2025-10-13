@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test Form</title>
+</head>
+<body>
+    <h1>Simple Test Form</h1>
+    <form action="process-form.php" method="POST">
+        <p>First Name: <input type="text" name="firstName" value="Alex" required></p>
+        <p>Last Name: <input type="text" name="lastName" value="Chen" required></p>
+        <p>Email: <input type="email" name="email" value="alex.chen.test@example.com" required></p>
+        <p>Bio: <textarea name="bio" required>Senior software engineer passionate about AI and machine learning. I love building scalable systems and mentoring junior developers.</textarea></p>
+        <p>Interests: <input type="checkbox" name="interests[]" value="programming" checked> Programming</p>
+        <p>Interests: <input type="checkbox" name="interests[]" value="design" checked> Design</p>
+        <p>Interests: <input type="checkbox" name="interests[]" value="photography" checked> Photography</p>
+        <p><input type="submit" value="Submit Test Form"></p>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8005/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroTools - Professional Tools for Business &amp; Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./MicroTools - Professional Tools for Business &amp; Life_files/css2" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .notice {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .category-section {
+            margin-bottom: 60px;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .category-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .tool-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .tool-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #28a745;
+        }
+        
+        .tool-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .tool-features {
+            margin-bottom: 20px;
+        }
+        
+        .tool-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tool-features li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .tool-features li:before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+        
+        .tool-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .package-deals {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .package-deals h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .package-savings {
+            background: #ffc107;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .package-tools {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .package-tools h4 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .package-tools ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .package-tools li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        .package-tools li:before {
+            content: "🔧 ";
+            margin-right: 8px;
+        }
+        
+        .testimonials {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                gap: 30px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style></head>
+<body>
+    <div class="container">
+        <!-- Sticky CTA for Freemium access -->
+        <div style="position: sticky; top: 0; z-index: 1000; padding: 10px 0; background: linear-gradient(90deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15)); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap;">
+                <span style="color:#e5e7eb; font-weight:600;">Freemium: Try any tool free for 7 days</span>
+                <a href="http://localhost:8005/tools/expense-tracker.html" style="background: #374151; color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none;">Try a Demo</a>
+                <a href="http://localhost:8005/marketplace.html" style="background: linear-gradient(45deg,#667eea,#764ba2); color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600;">See All Tools</a>
+            </div>
+        </div>
+        <div class="header">
+            <h1>🛠️ MicroTools</h1>
+            <p class="hero-subtitle">Professional Tools for Business &amp; Life</p>
+            <p class="hero-description">
+                Complete suite of professional-grade tools for freelancers, business owners, and professionals. 
+                Everything you need to manage your business, finances, and life in one place.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">22</div>
+                    <div class="stat-label">Professional Tools</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Offline Ready</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$200+</div>
+                    <div class="stat-label">Total Value</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                </div>
+            </div>
+            
+        <div class="notice" style="background: #3b82f6 !important; border: 2px solid #2563eb !important; color: white !important;">
+            🔒 IMPORTANT: What You're Getting<br>
+            Each tool is a single HTML file that works offline forever. No external servers, dependencies, or installations. 
+            Your data stays on your device. Some tools need internet for full features.
+        </div>
+
+        <!-- How to Get the Tools (Freemium Explainer) -->
+        <section style="margin: 24px 0 32px 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; color:#e5e7eb;">
+            <h3 style="margin-bottom:10px; font-size:1.2rem;">How to get the tools (Freemium)</h3>
+            <ol style="margin-left:18px; line-height:1.6;">
+                <li>Tap <strong>See All Tools</strong> to browse every tool.</li>
+                <li>Open any tool and tap <strong>Demo</strong> to try it free for 7 days.</li>
+                <li>Like it? Tap <strong>Buy Now</strong> to keep it forever for $1.</li>
+                <li>Prefer bundles? Visit our packages to save more.</li>
+            </ol>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="http://localhost:8005/marketplace.html" style="background: linear-gradient(45deg,#667eea,#764ba2); color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600;">See All Tools</a>
+                <a href="http://localhost:8005/tools/expense-tracker.html" style="background:#374151; color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none;">Try a Demo</a>
+            </div>
+        </section>
+
+        <!-- Business & Finance Tools -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">💼 Business &amp; Finance</h2>
+                <p class="category-description">Professional tools for managing your business, finances, and clients</p>
+            </div>
+            
+            <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">💼</div>
+                            <div class="tool-name">Invoice Generator</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Create professional invoices for your business. Track payments, manage clients, and get paid faster.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Professional invoice templates</li>
+                            <li>Client management</li>
+                            <li>Payment tracking</li>
+                            <li>PDF export</li>
+                            <li>Tax calculations</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/invoice-generator.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">👥</div>
+                            <div class="tool-name">Client Tracker</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Manage your clients, track projects, and grow your business. Keep all client information organized.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Client contact management</li>
+                            <li>Project tracking</li>
+                            <li>Payment history</li>
+                            <li>Revenue analytics</li>
+                            <li>Communication logs</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/client-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">💰</div>
+                            <div class="tool-name">Tax Calculator</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Calculate your taxes, find deductions, and optimize your tax strategy. Get accurate estimates.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Income tax calculations</li>
+                            <li>Deduction finder</li>
+                            <li>Tax bracket analysis</li>
+                            <li>Quarterly estimates</li>
+                            <li>Refund predictions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/tax-calculator.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">📄</div>
+                            <div class="tool-name">Receipt Scanner</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Track your expenses, organize receipts, and manage your spending. Perfect for business expenses.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Photo receipt capture</li>
+                            <li>Expense categorization</li>
+                            <li>Tax deduction tracking</li>
+                            <li>Export capabilities</li>
+                            <li>Monthly summaries</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/receipt-scanner.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">📈</div>
+                            <div class="tool-name">Investment Tracker</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Monitor your portfolio, track performance, and make informed investment decisions.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Portfolio monitoring</li>
+                            <li>Performance tracking</li>
+                            <li>Transaction management</li>
+                            <li>Asset allocation</li>
+                            <li>Risk analysis</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/investment-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">💰</div>
+                            <div class="tool-name">Expense Tracker</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Track your spending the easy way. No accounts, no complexity, just simple money tracking.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Add expenses in seconds</li>
+                            <li>Smart categories with emojis</li>
+                            <li>Monthly spending summary</li>
+                            <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/expense-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">📊</div>
+                            <div class="tool-name">Budget Planner</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Plan and track your budget with visual breakdowns. Stay on top of your finances.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Visual budget breakdowns</li>
+                    <li>Spending alerts</li>
+                    <li>Category management</li>
+                    <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/budget-planner.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- Productivity Tools -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">⚡ Productivity &amp; Time</h2>
+                <p class="category-description">Tools to boost your productivity and manage your time effectively</p>
+            </div>
+            
+            <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">⏰</div>
+                            <div class="tool-name">Time Tracker</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Track time on projects and tasks. Perfect for freelancers and productivity enthusiasts.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Project-based tracking</li>
+                            <li>Timer functionality</li>
+                            <li>Time reports and analytics</li>
+                            <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/time-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">📈</div>
+                            <div class="tool-name">Habit Tracker</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                        Build better habits with visual tracking. See your progress and stay motivated.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Visual calendar tracking</li>
+                            <li>Streak counters</li>
+                            <li>Habit categories</li>
+                    <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/habit-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">🔐</div>
+                            <div class="tool-name">Password Generator</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Create secure passwords instantly. No internet needed, completely private.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Customizable length and complexity</li>
+                            <li>Multiple character sets</li>
+                            <li>Copy to clipboard instantly</li>
+                            <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/password-generator.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Health & Fitness Tools -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">💪 Health &amp; Fitness</h2>
+                <p class="category-description">Tools to help you stay healthy, fit, and track your wellness journey</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🔥</div>
+                            <div class="tool-name">Calorie Counter</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Track calories and nutrition. Built-in food database with offline access.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Built-in food database</li>
+                    <li>Meal tracking</li>
+                    <li>Nutrition analysis</li>
+                    <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/calorie-counter.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🏃</div>
+                            <div class="tool-name">Cardio Tracker</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Track cardio workouts and heart rate. Monitor your fitness progress.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Exercise logging</li>
+                    <li>Heart rate tracking</li>
+                    <li>Progress analytics</li>
+                    <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/cardio-tracker.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">💪</div>
+                            <div class="tool-name">Muscle Builder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Build muscle with goal-based tracking. Bulk up or tone up with personalized plans.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Goal selection (bulk/tone)</li>
+                    <li>Exercise logging</li>
+                    <li>Progress tracking</li>
+                    <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/muscle-builder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">🍽️</div>
+                            <div class="tool-name">Meal Planner</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Plan your meals for the week. Generate shopping lists and stay organized.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Weekly meal planning</li>
+                            <li>Shopping list generation</li>
+                            <li>Recipe storage</li>
+                            <li>Works completely offline</li>
+                            <li>No personal data required</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/meal-planner.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lifestyle & Travel Tools -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">🌍 Lifestyle &amp; Travel</h2>
+                <p class="category-description">Tools for planning, discovering, and enjoying life to the fullest</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">✈️</div>
+                            <div class="tool-name">Travel Planner</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Plan your perfect trip with detailed itineraries, packing lists, and budget tracking.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Trip itinerary builder</li>
+                            <li>Packing lists</li>
+                            <li>Budget tracking</li>
+                            <li>Booking reminders</li>
+                            <li>Travel documents</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/travel-planner.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">🌤️</div>
+                            <div class="tool-name">Weather Finder</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Get real-time weather and forecasts. Works online with GPS or offline with saved locations.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Real-time weather data</li>
+                            <li>GPS location support</li>
+                            <li>7-day forecasts</li>
+                            <li>Offline location storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/weather-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🍳</div>
+                            <div class="tool-name">Recipe Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Find recipes by ingredients or cuisine. Plan meals and discover new dishes.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Ingredient-based search</li>
+                    <li>Cuisine filters</li>
+                    <li>Meal planning integration</li>
+                    <li>Offline recipe storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/recipe-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🍽️</div>
+                            <div class="tool-name">Restaurant Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Find restaurants by cuisine, price, and location. Save favorites and get recommendations.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Location-based search</li>
+                    <li>Cuisine and price filters</li>
+                    <li>Favorites system</li>
+                    <li>Offline favorites storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/restaurant-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🎵</div>
+                            <div class="tool-name">Music Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Discover music by genre, mood, and style. Create playlists and find new artists.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Genre and mood filters</li>
+                    <li>Playlist creation</li>
+                    <li>Artist discovery</li>
+                    <li>Offline playlist storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/music-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">📍</div>
+                            <div class="tool-name">Location Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Find places by category and distance. Save favorites and get directions.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Category-based search</li>
+                    <li>Distance filters</li>
+                    <li>Favorites system</li>
+                    <li>Offline favorites storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/location-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">⛽</div>
+                            <div class="tool-name">Gas Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Find cheap gas stations near you. Compare prices and save money on fuel.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Location-based search</li>
+                    <li>Price comparison</li>
+                    <li>Price alerts</li>
+                    <li>Offline station storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/gas-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                        <div>
+                    <div class="tool-icon">🍺</div>
+                            <div class="tool-name">Bar Finder</div>
+                        </div>
+                    <div class="tool-price">$1</div>
+                </div>
+                <div class="tool-description">
+                    Find bars, pubs, and nightlife. Search by type, atmosphere, and location.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                    <li>Comprehensive search</li>
+                    <li>Atmosphere filters</li>
+                    <li>Favorites system</li>
+                    <li>Offline favorites storage</li>
+                    <li>One-time purchase, no subscriptions</li>
+                </ul>
+                    </div>
+                <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/bar-finder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI-Powered Tools -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">🤖 AI-Powered Tools</h2>
+                <p class="category-description">Cutting-edge AI tools that create professional content in seconds</p>
+                    </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">✍️</div>
+                            <div class="tool-name">AI Content Generator</div>
+                </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Create professional content in seconds. Blog posts, social media, emails, and more - powered by AI.
+                </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Blog posts &amp; articles</li>
+                            <li>Social media content</li>
+                            <li>Email marketing</li>
+                            <li>Ad copy &amp; landing pages</li>
+                            <li>Multiple tones &amp; styles</li>
+                            <li>Content templates</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/ai-content-generator.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">🎨</div>
+                            <div class="tool-name">AI Logo Designer</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Create professional logos in seconds. Perfect for businesses, brands, and personal projects.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Multiple logo styles</li>
+                            <li>Color palette options</li>
+                            <li>Font selection</li>
+                            <li>Industry templates</li>
+                            <li>Download formats</li>
+                            <li>Brand kit creation</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/ai-logo-designer.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+            </div>
+        </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div>
+                            <div class="tool-icon">📄</div>
+                            <div class="tool-name">AI Resume Builder</div>
+                        </div>
+                        <div class="tool-price">$1</div>
+                    </div>
+                    <div class="tool-description">
+                        Create professional resumes that get you hired. AI-powered suggestions and templates.
+                    </div>
+                    <div class="tool-features">
+                        <ul>
+                            <li>Professional templates</li>
+                            <li>AI suggestions</li>
+                            <li>Industry-specific formats</li>
+                            <li>Skills optimization</li>
+                            <li>Download formats</li>
+                            <li>ATS optimization</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="http://localhost:8005/tools/ai-resume-builder.html" class="btn btn-secondary">Demo</a>
+                        <a href="http://localhost:8005/#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Package Deals -->
+        <div class="package-deals">
+            <h2>🎁 Package Deals - Save Big!</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.2rem; margin-bottom: 30px;">
+                Get multiple tools at a discount. Perfect for professionals who need comprehensive solutions.
+            </p>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-name">Business Essentials</div>
+                    <div class="package-price">$3</div>
+                    <div class="package-savings">Save $2</div>
+                    <div class="package-tools">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>Invoice Generator ($1)</li>
+                            <li>Client Tracker ($1)</li>
+                            <li>Tax Calculator ($1)</li>
+                            <li>Receipt Scanner ($1)</li>
+                            <li>Time Tracker ($1)</li>
+                    </ul>
+                </div>
+                    <a href="http://localhost:8005/#" class="btn btn-primary" style="width: 100%;">Buy Package</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-name">Complete Toolkit</div>
+                    <div class="package-price">$9</div>
+                    <div class="package-savings">Save $10 (53% off)</div>
+                    <div class="package-tools">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>All 25 Professional Tools</li>
+                            <li>3 AI-Powered Tools</li>
+                            <li>Lifetime Updates</li>
+                            <li>Priority Support</li>
+                            <li>Value: $300+</li>
+                        </ul>
+                    </div>
+                    <a href="http://localhost:8005/#" class="btn btn-primary" style="width: 100%;">Buy Complete</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-name">Fitness Bundle</div>
+                    <div class="package-price">$15</div>
+                    <div class="package-savings">Save $5</div>
+                    <div class="package-tools">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>Calorie Counter ($4)</li>
+                            <li>Cardio Tracker ($4)</li>
+                            <li>Muscle Builder ($4)</li>
+                            <li>Meal Planner ($4)</li>
+                    </ul>
+                </div>
+                    <a href="http://localhost:8005/#" class="btn btn-primary" style="width: 100%;">Buy Bundle</a>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-name">AI Power Pack</div>
+                    <div class="package-price">$75</div>
+                    <div class="package-savings">Save $15</div>
+                    <div class="package-tools">
+                        <h4>Includes:</h4>
+                        <ul>
+                            <li>AI Content Generator ($25)</li>
+                            <li>AI Logo Designer ($35)</li>
+                            <li>AI Resume Builder ($30)</li>
+                            <li>Value: $90</li>
+                    </ul>
+                    </div>
+                    <a href="http://localhost:8005/#" class="btn btn-primary" style="width: 100%;">Buy AI Pack</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <h2>What People Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Finally, tools that just work! No subscriptions, no accounts, no BS. The Invoice Generator has saved me so much time."
+                    </div>
+                    <div class="testimonial-author">- Sarah M., Freelancer</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "I love that everything works offline. I can track my habits and expenses even when I'm traveling without internet."
+                    </div>
+                    <div class="testimonial-author">- Mike R., Digital Nomad</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "The privacy-first approach is exactly what I needed. My data stays on my device, and I don't have to worry about it being sold."
+                    </div>
+                    <div class="testimonial-author">- Lisa K., Privacy Advocate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ for people who want simple solutions.</p>
+            <p>One-time purchase • Lifetime use • No subscriptions</p>
+        </div>
+    </div>
+
+
+</body></html>

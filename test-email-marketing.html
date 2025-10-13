@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Marketing Test - Digital Hermit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .test-header h1 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .test-section {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .test-section h2 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .test-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .test-button {
+            background: #1a365d;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #2c5282;
+            transform: translateY(-1px);
+        }
+        
+        .test-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .test-button.secondary {
+            background: #4a5568;
+        }
+        
+        .test-button.secondary:hover {
+            background: #2d3748;
+        }
+        
+        .test-button.success {
+            background: #38a169;
+        }
+        
+        .test-button.success:hover {
+            background: #2f855a;
+        }
+        
+        .test-button.warning {
+            background: #d69e2e;
+        }
+        
+        .test-button.warning:hover {
+            background: #b7791f;
+        }
+        
+        .test-button.danger {
+            background: #e53e3e;
+        }
+        
+        .test-button.danger:hover {
+            background: #c53030;
+        }
+        
+        .config-display {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .status-indicator.success {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+        
+        .status-indicator.error {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .status-indicator.warning {
+            background: #fef5e7;
+            color: #d69e2e;
+        }
+        
+        .status-indicator.info {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+        
+        .console-output {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        
+        .form-test {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1a365d;
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a365d;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: #2c5282;
+            transform: translateX(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Landing Page
+        </a>
+        
+        <div class="test-header">
+            <h1><i class="fas fa-envelope"></i> Email Marketing Test</h1>
+            <p>Test and configure your email marketing integration</p>
+        </div>
+
+        <!-- Configuration Status -->
+        <div class="test-section">
+            <h2>📋 Configuration Status</h2>
+            <div id="configStatus">
+                <div class="status-indicator info">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Checking configuration...
+                </div>
+            </div>
+            <div class="config-display" id="configDisplay">
+                <!-- Configuration will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Connection Test -->
+        <div class="test-section">
+            <h2>🔗 Connection Test</h2>
+            <p>Test your connection to your email provider</p>
+            <div class="test-controls">
+                <button class="test-button" onclick="testConnection()">
+                    <i class="fas fa-plug"></i>
+                    Test Connection
+                </button>
+                <button class="test-button secondary" onclick="checkSubscriptionStatus()">
+                    <i class="fas fa-search"></i>
+                    Check Subscription Status
+                </button>
+            </div>
+            <div id="connectionResult"></div>
+        </div>
+
+        <!-- Form Test -->
+        <div class="test-section">
+            <h2>📝 Form Submission Test</h2>
+            <p>Test email subscription with sample data</p>
+            <div class="form-test">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" id="testName" class="form-input" value="Test User">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="testEmail" class="form-input" value="test@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Interests</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interest1" value="technology" checked>
+                            <label for="interest1">Technology</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interest2" value="philosophy" checked>
+                            <label for="interest2">Philosophy</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interest3" value="books">
+                            <label for="interest3">Books</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interest4" value="nature">
+                            <label for="interest4">Nature</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Hobbies</label>
+                    <input type="text" id="testHobbies" class="form-input" value="Reading, hiking, coding">
+                </div>
+                <button class="test-button success" onclick="testFormSubmission()">
+                    <i class="fas fa-paper-plane"></i>
+                    Test Email Subscription
+                </button>
+            </div>
+            <div id="formTestResult"></div>
+        </div>
+
+        <!-- Configuration Management -->
+        <div class="test-section">
+            <h2>⚙️ Configuration Management</h2>
+            <div class="test-controls">
+                <button class="test-button secondary" onclick="toggleProvider()">
+                    <i class="fas fa-exchange-alt"></i>
+                    Switch Provider
+                </button>
+                <button class="test-button warning" onclick="toggleDoubleOptIn()">
+                    <i class="fas fa-envelope-open"></i>
+                    Toggle Double Opt-in
+                </button>
+                <button class="test-button" onclick="enableDebugMode()">
+                    <i class="fas fa-bug"></i>
+                    Enable Debug Mode
+                </button>
+                <button class="test-button danger" onclick="clearFallbackData()">
+                    <i class="fas fa-trash"></i>
+                    Clear Fallback Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Console Output -->
+        <div class="test-section">
+            <h2>📊 Console Output</h2>
+            <div class="console-output" id="consoleOutput"></div>
+            <button class="test-button secondary" onclick="clearConsole()">
+                <i class="fas fa-eraser"></i>
+                Clear Console
+            </button>
+        </div>
+    </div>
+
+    <!-- Load scripts -->
+    <script src="js/email-marketing.js"></script>
+    
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function addToConsole(message, type = 'log') {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'warn' ? 'warning' : 'success';
+            consoleOutput.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole(args.join(' '), 'warn');
+        };
+        
+        // Test functions
+        function testConnection() {
+            const resultDiv = document.getElementById('connectionResult');
+            resultDiv.innerHTML = '<div class="status-indicator info"><i class="fas fa-spinner fa-spin"></i> Testing connection...</div>';
+            
+            if (window.emailMarketing) {
+                window.emailMarketing.testConnection()
+                    .then(result => {
+                        resultDiv.innerHTML = `
+                            <div class="status-indicator success">
+                                <i class="fas fa-check"></i>
+                                Connection successful! ${result.listName || result.formName} (${result.memberCount || result.subscriberCount} subscribers)
+                            </div>
+                        `;
+                        console.log('Connection test successful:', result);
+                    })
+                    .catch(error => {
+                        resultDiv.innerHTML = `
+                            <div class="status-indicator error">
+                                <i class="fas fa-times"></i>
+                                Connection failed: ${error.message}
+                            </div>
+                        `;
+                        console.error('Connection test failed:', error);
+                    });
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="status-indicator error">
+                        <i class="fas fa-times"></i>
+                        Email marketing not available
+                    </div>
+                `;
+            }
+        }
+        
+        function checkSubscriptionStatus() {
+            const email = document.getElementById('testEmail').value;
+            const resultDiv = document.getElementById('connectionResult');
+            
+            if (!email) {
+                resultDiv.innerHTML = '<div class="status-indicator warning"><i class="fas fa-exclamation-triangle"></i> Please enter an email address</div>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="status-indicator info"><i class="fas fa-spinner fa-spin"></i> Checking subscription status...</div>';
+            
+            if (window.emailMarketing) {
+                window.emailMarketing.getSubscriptionStatus(email)
+                    .then(result => {
+                        const status = result.subscribed ? 'subscribed' : 'not subscribed';
+                        const statusClass = result.subscribed ? 'success' : 'warning';
+                        const statusIcon = result.subscribed ? 'check' : 'exclamation-triangle';
+                        
+                        resultDiv.innerHTML = `
+                            <div class="status-indicator ${statusClass}">
+                                <i class="fas fa-${statusIcon}"></i>
+                                ${email} is ${status} (Status: ${result.status})
+                            </div>
+                        `;
+                        console.log('Subscription status:', result);
+                    })
+                    .catch(error => {
+                        resultDiv.innerHTML = `
+                            <div class="status-indicator error">
+                                <i class="fas fa-times"></i>
+                                Error checking status: ${error.message}
+                            </div>
+                        `;
+                        console.error('Status check failed:', error);
+                    });
+            }
+        }
+        
+        function testFormSubmission() {
+            const name = document.getElementById('testName').value;
+            const email = document.getElementById('testEmail').value;
+            const hobbies = document.getElementById('testHobbies').value;
+            const interests = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+            
+            const resultDiv = document.getElementById('formTestResult');
+            resultDiv.innerHTML = '<div class="status-indicator info"><i class="fas fa-spinner fa-spin"></i> Testing form submission...</div>';
+            
+            if (window.emailMarketing) {
+                window.emailMarketing.handleFormSubmission({
+                    name: name,
+                    email: email,
+                    interests: interests,
+                    hobbies: hobbies
+                })
+                .then(result => {
+                    resultDiv.innerHTML = `
+                        <div class="status-indicator success">
+                            <i class="fas fa-check"></i>
+                            ${result.message}
+                        </div>
+                    `;
+                    console.log('Form submission test successful:', result);
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `
+                        <div class="status-indicator error">
+                            <i class="fas fa-times"></i>
+                            Form submission failed: ${error.message}
+                        </div>
+                    `;
+                    console.error('Form submission test failed:', error);
+                });
+            }
+        }
+        
+        function toggleProvider() {
+            if (window.emailMarketing) {
+                const config = window.emailMarketing.getConfig();
+                const newProvider = config.provider === 'mailchimp' ? 'convertkit' : 'mailchimp';
+                
+                window.emailMarketing.updateConfig({
+                    provider: newProvider
+                });
+                
+                console.log(`Switched to ${newProvider}`);
+                updateConfigDisplay();
+            }
+        }
+        
+        function toggleDoubleOptIn() {
+            if (window.emailMarketing) {
+                const config = window.emailMarketing.getConfig();
+                const provider = config.provider;
+                const newValue = !config[provider].doubleOptIn;
+                
+                window.emailMarketing.updateConfig({
+                    [provider]: {
+                        ...config[provider],
+                        doubleOptIn: newValue
+                    }
+                });
+                
+                console.log(`Double opt-in ${newValue ? 'enabled' : 'disabled'}`);
+                updateConfigDisplay();
+            }
+        }
+        
+        function enableDebugMode() {
+            if (window.emailMarketing) {
+                window.emailMarketing.updateConfig({
+                    debug: true
+                });
+                
+                console.log('Debug mode enabled');
+                updateConfigDisplay();
+            }
+        }
+        
+        function clearFallbackData() {
+            if (confirm('Are you sure you want to clear all fallback data?')) {
+                localStorage.removeItem('email_fallback_subscriptions');
+                console.log('Fallback data cleared');
+            }
+        }
+        
+        function clearConsole() {
+            document.getElementById('consoleOutput').innerHTML = '';
+        }
+        
+        function updateConfigDisplay() {
+            if (window.emailMarketing) {
+                const config = window.emailMarketing.getConfig();
+                const configDiv = document.getElementById('configDisplay');
+                configDiv.textContent = JSON.stringify(config, null, 2);
+            }
+        }
+        
+        function updateConfigStatus() {
+            const statusDiv = document.getElementById('configStatus');
+            
+            if (window.emailMarketing) {
+                const config = window.emailMarketing.getConfig();
+                const provider = config.provider;
+                const providerConfig = config[provider];
+                
+                if (!providerConfig.enabled) {
+                    statusDiv.innerHTML = `
+                        <div class="status-indicator warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            ${provider} is disabled
+                        </div>
+                    `;
+                } else {
+                    const requiredFields = window.emailMarketing.getRequiredFields(provider);
+                    const missingFields = requiredFields.filter(field => 
+                        !providerConfig[field] || providerConfig[field].includes('YOUR_')
+                    );
+                    
+                    if (missingFields.length > 0) {
+                        statusDiv.innerHTML = `
+                            <div class="status-indicator error">
+                                <i class="fas fa-times"></i>
+                                Missing configuration: ${missingFields.join(', ')}
+                            </div>
+                        `;
+                    } else {
+                        statusDiv.innerHTML = `
+                            <div class="status-indicator success">
+                                <i class="fas fa-check"></i>
+                                ${provider} configured correctly
+                            </div>
+                        `;
+                    }
+                }
+                
+                updateConfigDisplay();
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="status-indicator error">
+                        <i class="fas fa-times"></i>
+                        Email marketing not loaded
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Email Marketing Test Page Loaded');
+            console.log('📧 Checking email marketing setup...');
+            
+            setTimeout(() => {
+                updateConfigStatus();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Form Submission</title>
+</head>
+<body>
+    <h1>Test Form Submission</h1>
+    <button onclick="testSubmit()">Test Submit</button>
+    <div id="result"></div>
+
+    <script>
+    async function testSubmit() {
+        const formData = {
+            form_type: 'enhanced',
+            firstName: 'Alex',
+            lastName: 'Chen',
+            email: 'alex.chen.test@example.com',
+            age: '25-34',
+            location: 'San Francisco, CA',
+            bio: 'Senior software engineer passionate about AI and machine learning. I love building scalable systems and mentoring junior developers.',
+            techInterests: 'Programming, AI, Web Development',
+            mindfulnessPractices: 'Meditation, Yoga',
+            workStyle: 'Remote',
+            interests: ['programming', 'design', 'photography'],
+            hobbies: 'Hiking, photography, mentoring',
+            connectionType: 'professional',
+            privacyLevel: 'public',
+            newsletter: true
+        };
+
+        try {
+            const response = await fetch('process-form.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+        } catch (error) {
+            document.getElementById('result').innerHTML = 'Error: ' + error.message;
+        }
+    }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Proof Test - Digital Hermit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .test-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .console-output {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-controls">
+        <h2>🧪 Social Proof Test Controls</h2>
+        <p>Use these buttons to test the social proof features:</p>
+        
+        <div class="test-section">
+            <h3>User Count Tests</h3>
+            <button class="test-button" onclick="testUserCountIncrement()">Increment User Count</button>
+            <button class="test-button" onclick="testUserCountAnimation()">Animate User Count</button>
+            <button class="test-button" onclick="testSetUserCount()">Set User Count to 5000</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Activity Feed Tests</h3>
+            <button class="test-button" onclick="testAddActivity()">Add Random Activity</button>
+            <button class="test-button" onclick="testUpdateActivityFeed()">Update Activity Feed</button>
+            <button class="test-button" onclick="testCustomActivity()">Add Custom Activity</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Testimonial Tests</h3>
+            <button class="test-button" onclick="testTestimonialHover()">Test Testimonial Hover</button>
+            <button class="test-button" onclick="testTrustIndicatorClick()">Test Trust Indicator Click</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Analytics Tests</h3>
+            <button class="test-button" onclick="testSocialProofTracking()">Test Social Proof Tracking</button>
+            <button class="test-button" onclick="testFormSubmission()">Simulate Form Submission</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>Console Output</h3>
+            <div class="console-output" id="consoleOutput"></div>
+            <button class="test-button" onclick="clearConsole()">Clear Console</button>
+        </div>
+    </div>
+
+    <!-- Load the actual landing page content -->
+    <main class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Left Column: Text Content -->
+                <div class="hero-text">
+                    <p class="hero-tagline">Find Your Digital Sanctuary</p>
+                    <h1 class="hero-title">Digital Hermit</h1>
+                    <p class="hero-subtitle">The anti-social social media platform. Connect only with people who share your specific interests. No noise, no algorithms, just meaningful connections based on mutual topics.</p>
+                    <div class="hero-description">
+                        <p>This is really just a site to willingly exchange harmless information in order to find what you may be interested in with like minded people! This could be called an anti-social social media platform.</p>
+                        <p><strong>Come and look around!</strong> Want to post? Post! Want to interact with others? Do so! Want to just look around on a social media platform and be anti-social? <em>DO IT!</em></p>
+                    </div>
+                </div>
+                
+                <!-- Center Column: Prominent Images -->
+                <div class="hero-images">
+                    <div class="image-grid">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Hermit - Meditation and mindfulness" class="hero-img">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Hermit - Peaceful mountain landscape" class="hero-img">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Hermit - Serene forest path" class="hero-img">
+                    </div>
+                    
+                    <!-- Content Under Images -->
+                    <div class="images-content">
+                        <h3 class="content-title">Find Your Digital Sanctuary</h3>
+                        <p class="content-description">Connect with like-minded individuals who share your passions. No noise, no algorithms, just meaningful conversations based on mutual interests.</p>
+                        <div class="content-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="userCount">2,847</span>
+                                <span class="stat-label">Digital Hermits</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Interest Categories</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Privacy-First</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">4.9</span>
+                                <span class="stat-label">User Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Call-to-Action Form -->
+                <div class="hero-form-container">
+                    <form class="hero-form" id="signupForm" novalidate>
+                        <div class="form-group">
+                            <label for="userName" class="form-label">Full Name</label>
+                            <input type="text" id="userName" name="userName" class="form-input" required minlength="2" placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userEmail" class="form-label">Email Address</label>
+                            <input type="email" id="userEmail" name="userEmail" class="form-input" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <button type="submit" class="form-submit" id="submitBtn">
+                            <span class="btn-text">Find My Digital Tribe</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="social-proof-container">
+            <div class="social-proof-header">
+                <h2 class="social-proof-title">What Our Digital Hermits Say</h2>
+                <p class="social-proof-subtitle">Join thousands of people who have found their digital tribe</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Finally, a social platform that respects my time and attention. I've connected with amazing people who share my love for philosophy and meditation."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🧘</div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah M.</div>
+                            <div class="author-location">San Francisco, CA</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Digital Hermit helped me find my community of fellow book lovers and writers. No more endless scrolling through irrelevant content!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">📚</div>
+                        <div class="author-info">
+                            <div class="author-name">Michael R.</div>
+                            <div class="author-location">Portland, OR</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"The privacy-first approach is exactly what I was looking for. I can be myself without worrying about data mining or targeted ads."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🔒</div>
+                        <div class="author-info">
+                            <div class="author-name">Alex K.</div>
+                            <div class="author-location">Austin, TX</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Activity Feed -->
+            <div class="live-activity">
+                <h3 class="activity-title">Recent Activity</h3>
+                <div class="activity-feed" id="activityFeed">
+                    <div class="activity-item">
+                        <span class="activity-icon">👋</span>
+                        <span class="activity-text">Sarah from Seattle joined the Philosophy community</span>
+                        <span class="activity-time">2 minutes ago</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">🤝</span>
+                        <span class="activity-text">Mike and Lisa connected over their love of hiking</span>
+                        <span class="activity-time">5 minutes ago</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">📚</span>
+                        <span class="activity-text">Emma shared a book recommendation in the Books community</span>
+                        <span class="activity-time">8 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-text">Privacy-First</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">✅</div>
+                    <div class="trust-text">Verified Users</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <div class="trust-text">Secure Platform</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🌟</div>
+                    <div class="trust-text">4.9/5 Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/social-proof.js"></script>
+    
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function addToConsole(message, type = 'log') {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'warn' ? 'warning' : 'success';
+            consoleOutput.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole(args.join(' '), 'warn');
+        };
+        
+        // Test functions
+        function testUserCountIncrement() {
+            if (window.socialProof) {
+                window.socialProof.incrementUserCount();
+                console.log('✅ User count incremented');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testUserCountAnimation() {
+            if (window.socialProof) {
+                const currentCount = window.socialProof.getCurrentUserCount();
+                const newCount = currentCount + 10;
+                window.socialProof.setUserCount(newCount);
+                console.log(`✅ User count animated from ${currentCount} to ${newCount}`);
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testSetUserCount() {
+            if (window.socialProof) {
+                window.socialProof.setUserCount(5000);
+                console.log('✅ User count set to 5000');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testAddActivity() {
+            if (window.socialProof) {
+                const activities = [
+                    { icon: '🎉', text: 'New user joined the community!', time: 'just now' },
+                    { icon: '📝', text: 'Someone shared a new post', time: 'just now' },
+                    { icon: '💬', text: 'New conversation started', time: 'just now' }
+                ];
+                const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+                window.socialProof.addActivityItem(randomActivity.icon, randomActivity.text, randomActivity.time);
+                console.log('✅ Random activity added');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testUpdateActivityFeed() {
+            if (window.socialProof) {
+                window.socialProof.updateActivityFeed();
+                console.log('✅ Activity feed updated');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testCustomActivity() {
+            if (window.socialProof) {
+                window.socialProof.addActivityItem('🧪', 'Test activity added from social proof test page', 'just now');
+                console.log('✅ Custom activity added');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testTestimonialHover() {
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            if (testimonials.length > 0) {
+                testimonials[0].dispatchEvent(new Event('mouseenter'));
+                console.log('✅ Testimonial hover event triggered');
+            } else {
+                console.error('❌ No testimonials found');
+            }
+        }
+        
+        function testTrustIndicatorClick() {
+            const trustItems = document.querySelectorAll('.trust-item');
+            if (trustItems.length > 0) {
+                trustItems[0].click();
+                console.log('✅ Trust indicator click event triggered');
+            } else {
+                console.error('❌ No trust indicators found');
+            }
+        }
+        
+        function testSocialProofTracking() {
+            if (window.socialProof) {
+                window.socialProof.trackSocialProofInteraction('test_interaction', {
+                    test_type: 'manual_test',
+                    timestamp: new Date().toISOString()
+                });
+                console.log('✅ Social proof tracking event sent');
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function testFormSubmission() {
+            if (window.socialProof) {
+                // Simulate form submission
+                const nameInput = document.getElementById('userName');
+                const emailInput = document.getElementById('userEmail');
+                
+                if (nameInput && emailInput) {
+                    nameInput.value = 'Test User';
+                    emailInput.value = 'test@example.com';
+                    
+                    // Trigger the form submission handler
+                    const form = document.getElementById('signupForm');
+                    if (form) {
+                        form.dispatchEvent(new Event('submit'));
+                        console.log('✅ Form submission simulated');
+                    }
+                } else {
+                    console.error('❌ Form elements not found');
+                }
+            } else {
+                console.error('❌ Social proof not available');
+            }
+        }
+        
+        function clearConsole() {
+            document.getElementById('consoleOutput').innerHTML = '';
+        }
+        
+        // Log initial status
+        console.log('🧪 Social Proof Test Page Loaded');
+        console.log('📊 Checking social proof setup...');
+        
+        // Check status after a delay
+        setTimeout(() => {
+            if (window.socialProof && window.socialProof.isInitialized) {
+                console.log('✅ Social Proof Manager initialized successfully');
+                console.log(`📈 Current user count: ${window.socialProof.getCurrentUserCount()}`);
+            } else {
+                console.error('❌ Social Proof Manager not initialized');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

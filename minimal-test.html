@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Form Test</title>
+    <style>
+        body {
+            background: #1a365d;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-form-container {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            background: yellow !important;
+            border: 5px solid red !important;
+            min-height: 500px !important;
+            padding: 20px;
+        }
+        
+        .hero-form {
+            background: white !important;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 5px solid blue !important;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-submit {
+            background: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Minimal Form Test</h1>
+    
+    <div class="hero-content">
+        <div style="background: rgba(255,0,0,0.3); padding: 20px; border: 2px solid red;">
+            <h3>Left Column</h3>
+            <p>Text content here</p>
+        </div>
+        
+        <div style="background: rgba(0,0,255,0.3); padding: 20px; border: 2px solid blue;">
+            <h3>Middle Column</h3>
+            <p>Images here</p>
+        </div>
+        
+        <div class="hero-form-container">
+            <h3 style="color: black;">Right Column - Form</h3>
+            
+            <form class="hero-form">
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" class="form-input" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label>Interests:</label>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                        <label><input type="checkbox"> Technology</label>
+                        <label><input type="checkbox"> Philosophy</label>
+                        <label><input type="checkbox"> Books</label>
+                        <label><input type="checkbox"> Nature</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="form-submit">Find My Digital Tribe</button>
+            </form>
+        </div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px; font-size: 18px;">
+        <strong>You should see a yellow box with red border containing a white form with blue border.</strong>
+    </p>
+</body>
+</html>

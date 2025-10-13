@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing Test - Digital Hermit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .test-header h1 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .test-section {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .test-section h2 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .test-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .test-button {
+            background: #1a365d;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #2c5282;
+            transform: translateY(-1px);
+        }
+        
+        .test-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .test-button.secondary {
+            background: #4a5568;
+        }
+        
+        .test-button.secondary:hover {
+            background: #2d3748;
+        }
+        
+        .test-button.success {
+            background: #38a169;
+        }
+        
+        .test-button.success:hover {
+            background: #2f855a;
+        }
+        
+        .test-button.warning {
+            background: #d69e2e;
+        }
+        
+        .test-button.warning:hover {
+            background: #b7791f;
+        }
+        
+        .test-button.danger {
+            background: #e53e3e;
+        }
+        
+        .test-button.danger:hover {
+            background: #c53030;
+        }
+        
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .variant-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .variant-card:hover {
+            border-color: #1a365d;
+            box-shadow: 0 2px 8px rgba(26, 54, 93, 0.1);
+        }
+        
+        .variant-card.active {
+            border-color: #1a365d;
+            background: rgba(26, 54, 93, 0.05);
+        }
+        
+        .variant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .variant-name {
+            font-weight: 600;
+            color: #1a202c;
+        }
+        
+        .variant-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .variant-status.active {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+        
+        .variant-status.inactive {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .variant-content {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .variant-content h4 {
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .variant-content p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .variant-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .console-output {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a365d;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: #2c5282;
+            transform: translateX(-2px);
+        }
+        
+        .ab-test-info {
+            background: linear-gradient(135deg, #1a365d, #2c5282);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ab-test-info h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+        }
+        
+        .ab-test-info p {
+            margin: 0 0 0.5rem 0;
+            opacity: 0.9;
+        }
+        
+        .ab-test-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .test-config {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #1a365d;
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Landing Page
+        </a>
+        
+        <div class="test-header">
+            <h1><i class="fas fa-flask"></i> A/B Testing Test Center</h1>
+            <p>Test and manage A/B testing variations for your landing page</p>
+        </div>
+
+        <!-- A/B Testing Information -->
+        <div class="ab-test-info">
+            <h3>🧪 A/B Testing Features</h3>
+            <p>Your Digital Hermit landing page includes comprehensive A/B testing with:</p>
+            <p>• <strong>Headline variations</strong> - Test different taglines and titles</p>
+            <p>• <strong>CTA button tests</strong> - Test different button text and colors</p>
+            <p>• <strong>Form descriptions</strong> - Test different messaging approaches</p>
+            <p>• <strong>Interest categories</strong> - Test different layouts and content</p>
+        </div>
+
+        <!-- Current Test Status -->
+        <div class="test-section">
+            <h2>📊 Current Test Status</h2>
+            <div class="stats-grid" id="testStats">
+                <!-- Test statistics will be populated here -->
+            </div>
+        </div>
+
+        <!-- Active Tests -->
+        <div class="test-section">
+            <h2>🎯 Active Tests</h2>
+            <div class="variants-grid" id="activeTests">
+                <!-- Active tests will be populated here -->
+            </div>
+        </div>
+
+        <!-- Test Management -->
+        <div class="test-section">
+            <h2>⚙️ Test Management</h2>
+            <div class="test-controls">
+                <button class="test-button" onclick="enableDebugMode()">
+                    <i class="fas fa-bug"></i>
+                    Enable Debug Mode
+                </button>
+                <button class="test-button secondary" onclick="disableDebugMode()">
+                    <i class="fas fa-eye-slash"></i>
+                    Disable Debug Mode
+                </button>
+                <button class="test-button success" onclick="showTestResults()">
+                    <i class="fas fa-chart-bar"></i>
+                    Show Test Results
+                </button>
+                <button class="test-button warning" onclick="clearTestData()">
+                    <i class="fas fa-trash"></i>
+                    Clear Test Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Variant Testing -->
+        <div class="test-section">
+            <h2>🔬 Variant Testing</h2>
+            <p>Test different variants manually (debug mode required)</p>
+            <div class="test-controls">
+                <button class="test-button" onclick="testHeadlineVariants()">
+                    <i class="fas fa-heading"></i>
+                    Test Headlines
+                </button>
+                <button class="test-button secondary" onclick="testCTAButtonVariants()">
+                    <i class="fas fa-mouse-pointer"></i>
+                    Test CTA Buttons
+                </button>
+                <button class="test-button success" onclick="testFormDescriptionVariants()">
+                    <i class="fas fa-align-left"></i>
+                    Test Form Descriptions
+                </button>
+                <button class="test-button warning" onclick="testInterestCategoryVariants()">
+                    <i class="fas fa-tags"></i>
+                    Test Interest Categories
+                </button>
+            </div>
+        </div>
+
+        <!-- Test Configuration -->
+        <div class="test-section">
+            <h2>⚙️ Test Configuration</h2>
+            <div class="form-group">
+                <label class="form-label">Traffic Allocation</label>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <div>
+                        <label style="font-size: 0.75rem; color: #4a5568;">Control</label>
+                        <input type="number" class="form-input" id="controlAllocation" value="25" min="0" max="100">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.75rem; color: #4a5568;">Variant A</label>
+                        <input type="number" class="form-input" id="variantAAllocation" value="25" min="0" max="100">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.75rem; color: #4a5568;">Variant B</label>
+                        <input type="number" class="form-input" id="variantBAllocation" value="25" min="0" max="100">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.75rem; color: #4a5568;">Variant C</label>
+                        <input type="number" class="form-input" id="variantCAllocation" value="25" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="test-controls">
+                <button class="test-button" onclick="updateTrafficAllocation()">
+                    <i class="fas fa-save"></i>
+                    Update Allocation
+                </button>
+                <button class="test-button secondary" onclick="resetTrafficAllocation()">
+                    <i class="fas fa-undo"></i>
+                    Reset to Default
+                </button>
+            </div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="test-section">
+            <h2>📈 Test Results</h2>
+            <div id="testResults">
+                <!-- Test results will be populated here -->
+            </div>
+        </div>
+
+        <!-- Console Output -->
+        <div class="test-section">
+            <h2>📊 Console Output</h2>
+            <div class="console-output" id="consoleOutput"></div>
+            <button class="test-button secondary" onclick="clearConsole()">
+                <i class="fas fa-eraser"></i>
+                Clear Console
+            </button>
+        </div>
+    </div>
+
+    <!-- Load scripts -->
+    <script src="js/ab-testing.js"></script>
+    
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function addToConsole(message, type = 'log') {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'warn' ? 'warning' : 'success';
+            consoleOutput.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole(args.join(' '), 'warn');
+        };
+        
+        // Test functions
+        function enableDebugMode() {
+            if (window.abTesting) {
+                window.abTesting.config.debug = true;
+                console.log('Debug mode enabled');
+                updateTestStatus();
+            }
+        }
+        
+        function disableDebugMode() {
+            if (window.abTesting) {
+                window.abTesting.config.debug = false;
+                console.log('Debug mode disabled');
+                updateTestStatus();
+            }
+        }
+        
+        function showTestResults() {
+            if (window.abTesting) {
+                const results = window.abTesting.getTestStats();
+                const resultsDiv = document.getElementById('testResults');
+                
+                let html = '<div class="stats-grid">';
+                html += `
+                    <div class="stat-card">
+                        <div class="stat-number">${results.totalUsers}</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${results.conversions}</div>
+                        <div class="stat-label">Conversions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${(results.conversionRate * 100).toFixed(1)}%</div>
+                        <div class="stat-label">Conversion Rate</div>
+                    </div>
+                `;
+                html += '</div>';
+                
+                html += '<h3>Variant Performance</h3><div class="variants-grid">';
+                Object.entries(results.variants).forEach(([variant, stats]) => {
+                    html += `
+                        <div class="variant-card">
+                            <div class="variant-header">
+                                <div class="variant-name">${variant}</div>
+                                <div class="variant-status active">${(stats.rate * 100).toFixed(1)}%</div>
+                            </div>
+                            <div class="variant-content">
+                                <p><strong>Users:</strong> ${stats.users}</p>
+                                <p><strong>Conversions:</strong> ${stats.conversions}</p>
+                                <p><strong>Rate:</strong> ${(stats.rate * 100).toFixed(1)}%</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                
+                resultsDiv.innerHTML = html;
+                console.log('Test results displayed:', results);
+            }
+        }
+        
+        function clearTestData() {
+            if (confirm('Are you sure you want to clear all test data?')) {
+                if (window.abTesting) {
+                    // Clear cookies
+                    document.cookie = 'digital_hermit_ab_test=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    console.log('Test data cleared');
+                    updateTestStatus();
+                }
+            }
+        }
+        
+        function testHeadlineVariants() {
+            if (window.abTesting && window.abTesting.config.debug) {
+                const variants = ['control', 'variant_a', 'variant_b', 'variant_c'];
+                let currentIndex = 0;
+                
+                const testVariant = () => {
+                    if (currentIndex < variants.length) {
+                        const variant = variants[currentIndex];
+                        window.abTesting.forceVariant('headline', variant);
+                        console.log(`Testing headline variant: ${variant}`);
+                        currentIndex++;
+                        setTimeout(testVariant, 2000);
+                    } else {
+                        console.log('Headline variant testing completed');
+                    }
+                };
+                
+                testVariant();
+            } else {
+                console.warn('Debug mode required for variant testing');
+            }
+        }
+        
+        function testCTAButtonVariants() {
+            if (window.abTesting && window.abTesting.config.debug) {
+                const variants = ['control', 'variant_a', 'variant_b', 'variant_c'];
+                let currentIndex = 0;
+                
+                const testVariant = () => {
+                    if (currentIndex < variants.length) {
+                        const variant = variants[currentIndex];
+                        window.abTesting.forceVariant('cta_button', variant);
+                        console.log(`Testing CTA button variant: ${variant}`);
+                        currentIndex++;
+                        setTimeout(testVariant, 2000);
+                    } else {
+                        console.log('CTA button variant testing completed');
+                    }
+                };
+                
+                testVariant();
+            } else {
+                console.warn('Debug mode required for variant testing');
+            }
+        }
+        
+        function testFormDescriptionVariants() {
+            if (window.abTesting && window.abTesting.config.debug) {
+                const variants = ['control', 'variant_a', 'variant_b', 'variant_c'];
+                let currentIndex = 0;
+                
+                const testVariant = () => {
+                    if (currentIndex < variants.length) {
+                        const variant = variants[currentIndex];
+                        window.abTesting.forceVariant('form_description', variant);
+                        console.log(`Testing form description variant: ${variant}`);
+                        currentIndex++;
+                        setTimeout(testVariant, 2000);
+                    } else {
+                        console.log('Form description variant testing completed');
+                    }
+                };
+                
+                testVariant();
+            } else {
+                console.warn('Debug mode required for variant testing');
+            }
+        }
+        
+        function testInterestCategoryVariants() {
+            if (window.abTesting && window.abTesting.config.debug) {
+                const variants = ['control', 'variant_a', 'variant_b'];
+                let currentIndex = 0;
+                
+                const testVariant = () => {
+                    if (currentIndex < variants.length) {
+                        const variant = variants[currentIndex];
+                        window.abTesting.forceVariant('interest_categories', variant);
+                        console.log(`Testing interest category variant: ${variant}`);
+                        currentIndex++;
+                        setTimeout(testVariant, 2000);
+                    } else {
+                        console.log('Interest category variant testing completed');
+                    }
+                };
+                
+                testVariant();
+            } else {
+                console.warn('Debug mode required for variant testing');
+            }
+        }
+        
+        function updateTrafficAllocation() {
+            if (window.abTesting) {
+                const control = parseInt(document.getElementById('controlAllocation').value);
+                const variantA = parseInt(document.getElementById('variantAAllocation').value);
+                const variantB = parseInt(document.getElementById('variantBAllocation').value);
+                const variantC = parseInt(document.getElementById('variantCAllocation').value);
+                
+                const total = control + variantA + variantB + variantC;
+                
+                if (total !== 100) {
+                    alert('Traffic allocation must total 100%');
+                    return;
+                }
+                
+                window.abTesting.config.settings.trafficAllocation = {
+                    control: control,
+                    variant_a: variantA,
+                    variant_b: variantB,
+                    variant_c: variantC
+                };
+                
+                console.log('Traffic allocation updated:', window.abTesting.config.settings.trafficAllocation);
+            }
+        }
+        
+        function resetTrafficAllocation() {
+            if (window.abTesting) {
+                window.abTesting.config.settings.trafficAllocation = {
+                    control: 25,
+                    variant_a: 25,
+                    variant_b: 25,
+                    variant_c: 25
+                };
+                
+                document.getElementById('controlAllocation').value = 25;
+                document.getElementById('variantAAllocation').value = 25;
+                document.getElementById('variantBAllocation').value = 25;
+                document.getElementById('variantCAllocation').value = 25;
+                
+                console.log('Traffic allocation reset to default');
+            }
+        }
+        
+        function clearConsole() {
+            document.getElementById('consoleOutput').innerHTML = '';
+        }
+        
+        function updateTestStatus() {
+            const statsDiv = document.getElementById('testStats');
+            const activeTestsDiv = document.getElementById('activeTests');
+            
+            if (window.abTesting) {
+                const variants = window.abTesting.getAllVariants();
+                const config = window.abTesting.config;
+                
+                // Update stats
+                let statsHtml = '';
+                statsHtml += `
+                    <div class="stat-card">
+                        <div class="stat-number">${Object.keys(config.tests).length}</div>
+                        <div class="stat-label">Total Tests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${Object.keys(variants).length}</div>
+                        <div class="stat-label">Active Tests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${config.debug ? 'ON' : 'OFF'}</div>
+                        <div class="stat-label">Debug Mode</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${config.settings.testDuration}</div>
+                        <div class="stat-label">Test Duration (days)</div>
+                    </div>
+                `;
+                statsDiv.innerHTML = statsHtml;
+                
+                // Update active tests
+                let activeTestsHtml = '';
+                Object.entries(variants).forEach(([testKey, variant]) => {
+                    const test = config.tests[testKey];
+                    const variantData = test.variants[variant];
+                    
+                    activeTestsHtml += `
+                        <div class="variant-card active">
+                            <div class="variant-header">
+                                <div class="variant-name">${test.name}</div>
+                                <div class="variant-status active">${variant}</div>
+                            </div>
+                            <div class="variant-content">
+                                <h4>${variantData.name}</h4>
+                                <p>${test.description}</p>
+                                <p><strong>Current Variant:</strong> ${variantData.name}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                activeTestsDiv.innerHTML = activeTestsHtml;
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 A/B Testing Test Center Loaded');
+            console.log('📊 Checking A/B testing configuration...');
+            
+            setTimeout(() => {
+                updateTestStatus();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

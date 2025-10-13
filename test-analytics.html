@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Test - Digital Hermit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #console-output {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Analytics Test Page</h1>
+    <p>This page helps you test and verify your analytics setup for the Digital Hermit landing page.</p>
+
+    <div class="test-section">
+        <h2>📊 Analytics Status</h2>
+        <div id="analytics-status">
+            <p>Checking analytics configuration...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Test Events</h2>
+        <p>Click these buttons to test different analytics events:</p>
+        <button onclick="testPageView()">Test Page View</button>
+        <button onclick="testFormSubmission()">Test Form Submission</button>
+        <button onclick="testButtonClick()">Test Button Click</button>
+        <button onclick="testValidationError()">Test Validation Error</button>
+        <button onclick="testInterestSelection()">Test Interest Selection</button>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Console Output</h2>
+        <p>Analytics events and debug information will appear below:</p>
+        <div id="console-output"></div>
+        <button onclick="clearConsole()">Clear Console</button>
+    </div>
+
+    <div class="test-section">
+        <h2>⚙️ Configuration Check</h2>
+        <div id="config-status">
+            <p>Checking configuration...</p>
+        </div>
+    </div>
+
+    <!-- Load analytics script -->
+    <script src="js/analytics.js"></script>
+    
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function addToConsole(message, type = 'log') {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'warn' ? 'warning' : 'success';
+            consoleOutput.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole(args.join(' '), 'warn');
+        };
+        
+        // Test functions
+        function testPageView() {
+            if (window.analytics) {
+                window.analytics.trackEvent('page_view', {
+                    page_title: 'Analytics Test Page',
+                    test_mode: true
+                });
+                console.log('✅ Page view event sent');
+            } else {
+                console.error('❌ Analytics not available');
+            }
+        }
+        
+        function testFormSubmission() {
+            if (window.analytics) {
+                window.analytics.trackFormSubmission({
+                    name: 'Test User',
+                    email: 'test@example.com',
+                    interests: ['technology', 'philosophy', 'books'],
+                    hobbies: 'Testing analytics functionality'
+                });
+                console.log('✅ Form submission event sent');
+            } else {
+                console.error('❌ Analytics not available');
+            }
+        }
+        
+        function testButtonClick() {
+            if (window.analytics) {
+                window.analytics.trackButtonClick('test_button', 'analytics_test_page');
+                console.log('✅ Button click event sent');
+            } else {
+                console.error('❌ Analytics not available');
+            }
+        }
+        
+        function testValidationError() {
+            if (window.analytics) {
+                window.analytics.trackFormValidationError('test_field', 'test_error');
+                console.log('✅ Validation error event sent');
+            } else {
+                console.error('❌ Analytics not available');
+            }
+        }
+        
+        function testInterestSelection() {
+            if (window.analytics) {
+                window.analytics.trackEvent('interest_selection', {
+                    interest: 'test_interest',
+                    selected: true,
+                    total_selected: 1
+                });
+                console.log('✅ Interest selection event sent');
+            } else {
+                console.error('❌ Analytics not available');
+            }
+        }
+        
+        function clearConsole() {
+            document.getElementById('console-output').innerHTML = '';
+        }
+        
+        // Check analytics status on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                checkAnalyticsStatus();
+                checkConfiguration();
+            }, 1000);
+        });
+        
+        function checkAnalyticsStatus() {
+            const statusDiv = document.getElementById('analytics-status');
+            
+            if (window.analytics && window.analytics.isInitialized) {
+                statusDiv.innerHTML = '<p class="success">✅ Analytics initialized successfully</p>';
+            } else if (window.analytics) {
+                statusDiv.innerHTML = '<p class="warning">⚠️ Analytics object exists but not initialized</p>';
+            } else {
+                statusDiv.innerHTML = '<p class="error">❌ Analytics not loaded</p>';
+            }
+        }
+        
+        function checkConfiguration() {
+            const configDiv = document.getElementById('config-status');
+            let configHtml = '<h3>Configuration Status:</h3>';
+            
+            // Check if analytics.js loaded
+            if (typeof ANALYTICS_CONFIG !== 'undefined') {
+                configHtml += '<p class="success">✅ Analytics configuration loaded</p>';
+                
+                // Check Google Analytics
+                if (ANALYTICS_CONFIG.googleAnalytics.enabled) {
+                    if (ANALYTICS_CONFIG.googleAnalytics.measurementId === 'GA_MEASUREMENT_ID') {
+                        configHtml += '<p class="warning">⚠️ Google Analytics: Please configure your Measurement ID</p>';
+                    } else {
+                        configHtml += '<p class="success">✅ Google Analytics: Configured</p>';
+                    }
+                } else {
+                    configHtml += '<p class="warning">⚠️ Google Analytics: Disabled</p>';
+                }
+                
+                // Check Facebook Pixel
+                if (ANALYTICS_CONFIG.facebookPixel.enabled) {
+                    if (ANALYTICS_CONFIG.facebookPixel.pixelId === 'FACEBOOK_PIXEL_ID') {
+                        configHtml += '<p class="warning">⚠️ Facebook Pixel: Please configure your Pixel ID</p>';
+                    } else {
+                        configHtml += '<p class="success">✅ Facebook Pixel: Configured</p>';
+                    }
+                } else {
+                    configHtml += '<p class="warning">⚠️ Facebook Pixel: Disabled</p>';
+                }
+            } else {
+                configHtml += '<p class="error">❌ Analytics configuration not found</p>';
+            }
+            
+            configDiv.innerHTML = configHtml;
+        }
+        
+        // Log initial status
+        console.log('🔍 Analytics Test Page Loaded');
+        console.log('📊 Checking analytics setup...');
+    </script>
+</body>
+</html>
