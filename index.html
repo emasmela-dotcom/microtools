@@ -12,21 +12,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Urgency Banner -->
-        <div class="urgency-banner">
-            LIMITED TIME: Get 50% off Complete Toolkit - Only $4.50 (Save $4.50) - Ends Soon!
-        </div>
-        
-        <!-- Social Proof Banner -->
-        <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; padding: 15px; margin: 20px 0; text-align: center; color: #00d4ff; font-weight: 600;">
-            Over 50,000 professionals trust MicroTools • 22 tools • $200+ value • One-time purchase
-        </div>
-        
-        <!-- Revenue Optimization Banner -->
-        <div style="background: linear-gradient(135deg, #2a2a2a, #1a1a1a); color: #00d4ff; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);">
-            <h3 style="margin-bottom: 10px;">NEW: Earn Money While You Use Our Tools!</h3>
-            <p style="margin-bottom: 15px; opacity: 0.9;">Share tools with friends → Earn $1 per purchase → They save 20% → Everyone wins!</p>
-            <button onclick="showReferralModal()" style="background: #00d4ff; color: #000; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; cursor: pointer;">Start Earning Now</button>
+        <!-- Professional Header -->
+        <div style="background: #1a1a1a; color: #e0e0e0; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; border: 1px solid #333;">
+            <h3 style="margin-bottom: 10px; color: #00d4ff;">Professional Business Tools</h3>
+            <p style="margin-bottom: 15px; opacity: 0.9;">22 professional tools for $1 each • No subscriptions • One-time purchase</p>
         </div>
         
         <div class="header">
@@ -57,16 +46,11 @@
                 </div>
             </div>
             
-        <!-- Freemium Explainer -->
-        <div class="freemium-section">
-            <h3>How to Get the Tools (Freemium Model)</h3>
-            <ol class="freemium-steps">
-                <li><strong>Browse Tools</strong> - Check out all 22 professional tools below</li>
-                <li><strong>Try Free for 7 Days</strong> - Click "Demo" on any tool to test it</li>
-                <li><strong>Buy for $1</strong> - Like it? Keep it forever for just $1</li>
-                <li><strong>Or Self-Terminates</strong> - Don't like it? It stops working after 7 days</li>
-            </ol>
-            <div class="freemium-cta">
+        <!-- Professional Tools Overview -->
+        <div style="background: #2a2a2a; color: #e0e0e0; padding: 30px; border-radius: 8px; margin: 30px 0; text-align: center; border: 1px solid #333;">
+            <h3 style="margin-bottom: 20px; color: #00d4ff;">Professional Business Tools</h3>
+            <p style="margin-bottom: 20px; opacity: 0.9;">Each tool costs $1 • No subscriptions • One-time purchase • Professional grade</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="#tools" class="btn btn-primary">Browse All Tools</a>
                 <a href="#packages" class="btn btn-secondary">View Packages</a>
             </div>
@@ -777,30 +761,19 @@
             </div>
         </div>
         
-        <!-- Premium Upgrade Section -->
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 20px; margin: 60px 0; text-align: center; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;"> Premium Upgrade Available!</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Get lifetime access to ALL tools + exclusive features for just $9.99</p>
-            <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
-                <h3 style="margin-bottom: 20px;">Premium Features:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: left;">
-                    <div>• All 22 tools (lifetime access)</div>
-                    <div>• Priority support</div>
-                    <div>• Exclusive templates</div>
-                    <div>• Advanced analytics</div>
-                    <div>• Custom branding</div>
-                    <div>• API access</div>
-                </div>
-            </div>
+        <!-- Professional Package Options -->
+        <div style="background: #2a2a2a; color: #e0e0e0; padding: 40px; border-radius: 8px; margin: 60px 0; text-align: center; border: 1px solid #333;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #00d4ff;">Professional Package Options</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9;">Choose the package that fits your business needs</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <button onclick="purchasePremium()" style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Upgrade Now - $9.99</button>
-                <button onclick="showUpsellModal()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white; padding: 15px 30px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Learn More</button>
+                <a href="mailto:partners.clearhub@outlook.com?subject=Complete Toolkit Package - $4.50" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">Complete Toolkit - $4.50</a>
+                <a href="mailto:partners.clearhub@outlook.com?subject=Individual Tools - $1 each" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.1rem;">Individual Tools - $1 each</a>
             </div>
         </div>
         
         <!-- Package Deals -->
         <div class="package-deals" id="packages">
-            <h2>🎁 Package Deals - Save Big!</h2>
+            <h2>Package Deals - Save Big!</h2>
             <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.2rem; margin-bottom: 30px;">
                 Get multiple tools at a discount. Perfect for professionals who need comprehensive solutions.
             </p>
