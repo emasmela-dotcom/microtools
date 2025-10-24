@@ -235,8 +235,9 @@ body {
 }
 
 .tool-features li:before {
-    content: "✅ ";
+    content: "• ";
     margin-right: 8px;
+    color: #00d4ff;
 }
 
 .tool-actions {
