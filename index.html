@@ -17,6 +17,11 @@
             🔥 LIMITED TIME: Get 50% off Complete Toolkit - Only $4.50 (Save $4.50) - Ends Soon!
         </div>
         
+        <!-- Social Proof Banner -->
+        <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; padding: 15px; margin: 20px 0; text-align: center; color: #00d4ff; font-weight: 600;">
+            🎉 Over 50,000 professionals trust MicroTools • 22 tools • $200+ value • One-time purchase
+        </div>
+        
         <div class="header">
             <h1>🛠️ MicroTools</h1>
             <p class="hero-subtitle">Professional Tools for Business & Life</p>
@@ -873,5 +878,25 @@
             <p>One-time purchase • Lifetime use • No subscriptions</p>
         </div>
     </div>
+    
+    <!-- Sticky Mobile CTA -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; text-align: center; z-index: 1000; display: none;" id="sticky-cta">
+        <a href="mailto:partners.clearhub@outlook.com?subject=Complete Toolkit Package - $4.50 (50% off)" style="color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+            🎁 Get Complete Toolkit - $4.50 (50% OFF)
+        </a>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Show sticky CTA on mobile after scrolling
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('sticky-cta');
+            if (window.innerWidth <= 768 && window.scrollY > 500) {
+                stickyCta.style.display = 'block';
+            } else {
+                stickyCta.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
